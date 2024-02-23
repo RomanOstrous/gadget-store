@@ -1,9 +1,21 @@
 import { createRoot } from 'react-dom/client';
+import { HashRouter as Router } from 'react-router-dom';
+import './fonts/Mont-Bold.otf';
+import './fonts/Mont-Regular.otf';
+import './fonts/Mont-SemiBold.otf';
+import './styles/index.scss';
 
-import 'bulma/css/bulma.css';
-import '@fortawesome/fontawesome-free/css/all.css';
-import './index.scss';
+import { Root } from './Root';
+import { StorProvider } from './context/StorProvider';
+import ScrollToTop from './helpers/scrool';
 
-import { App } from './App';
+const container = document.getElementById('root') as HTMLElement;
 
-createRoot(document.getElementById('root') as HTMLDivElement).render(<App />);
+createRoot(container).render(
+  <StorProvider>
+    <Router>
+      <ScrollToTop />
+      <Root />
+    </Router>
+  </StorProvider>,
+);
